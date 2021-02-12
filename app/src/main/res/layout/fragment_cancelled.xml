@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".android.MainActivity">
+    tools:context=".android.CancelledFragment" >
 
-    <Button
-        android:id="@+id/button_dkg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:onClick="onClickDistributedKeyGenerationButton"
-        android:text="@string/button_dkg_main_start"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="315dp"
+        android:layout_height="259dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/text_cancelled_fragment"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

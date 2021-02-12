@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/SelectFragment">
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.project.collaborativeauthentication.android.MainFragmentDistributedKeyGeneration"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/cancel"
+            app:destination="@id/cancelledFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SelectFragment"
+        android:name="com.project.collaborativeauthentication.android.SelectDevicesFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_select_devices">
+
+        <action
+            android:id="@+id/submit"
+            app:destination="@id/MainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cancelledFragment"
+        android:name="com.project.collaborativeauthentication.android.CancelledFragment"
+        android:label="fragment_cancelled"
+        tools:layout="@layout/fragment_cancelled" />
+</navigation>
