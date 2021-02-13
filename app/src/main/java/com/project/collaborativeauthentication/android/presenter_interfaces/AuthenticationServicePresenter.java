@@ -5,4 +5,6 @@ public interface AuthenticationServicePresenter
     void onStartCommand();
     void onStopCommand();
     void onUnsupportedAction();
+
+    void notifyStateBluetoothChanged();
 }

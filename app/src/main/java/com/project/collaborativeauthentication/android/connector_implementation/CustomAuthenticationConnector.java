@@ -1,7 +1,0 @@
-package com.project.collaborativeauthentication.android.connector_implementation;
-
-import com.project.collaborativeauthentication.android.connector_interfaces.AuthenticationConnector;
-
-public class CustomAuthenticationConnector implements AuthenticationConnector
-{
-}

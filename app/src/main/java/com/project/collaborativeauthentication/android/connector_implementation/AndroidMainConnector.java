@@ -9,14 +9,14 @@ public class AndroidMainConnector implements MainConnector {
 
     private final HomePresenter context;
     private final AndroidBluetoothConnector bluetoothConnector;
-    private final AndroidAuthenticationServiceConnector authenticationServiceConnector;
+    private final AndroidActivityAuthenticationServiceConnector authenticationServiceConnector;
 
 
     public AndroidMainConnector(HomePresenter context)
     {
         this.context                        = context;
         this.bluetoothConnector             = new AndroidBluetoothConnector(context);
-        this.authenticationServiceConnector = new AndroidAuthenticationServiceConnector(context);
+        this.authenticationServiceConnector = new AndroidActivityAuthenticationServiceConnector(context);
     }
     @Override
     public boolean isBluetoothAvailable() {
