@@ -18,4 +18,5 @@
     <string name="text_button_cancel">Cancel</string>
     <string name="text_cancelled_fragment">The distributed key generation process was cancelled.
         There are no new keys  added to the system</string>
+    <string name="notificationText">\"Authentication service available</string>
 </resources>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.project.collaborativeauthentication.android.MainDistributedKeyGenerationFragment"
+        android:name="com.project.collaborativeauthentication.android.ui.MainDistributedKeyGenerationFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_main">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SelectFragment"
-        android:name="com.project.collaborativeauthentication.android.SelectDevicesFragment"
+        android:name="com.project.collaborativeauthentication.android.ui.SelectDevicesFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_select_devices">
 
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/cancelledFragment"
-        android:name="com.project.collaborativeauthentication.android.CancelledFragment"
+        android:name="com.project.collaborativeauthentication.android.ui.CancelledFragment"
         android:label="fragment_cancelled"
         tools:layout="@layout/fragment_cancelled" />
 </navigation>

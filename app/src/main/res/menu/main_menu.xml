@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.project.collaborativeauthentication.android.MainActivity">
+    tools:context="com.project.collaborativeauthentication.android.ui.MainActivity">
     <item
         android:id="@+id/listener_start"
         android:orderInCategory="100"

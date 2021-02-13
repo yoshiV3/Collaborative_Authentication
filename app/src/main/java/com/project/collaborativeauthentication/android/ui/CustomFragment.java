@@ -1,4 +1,4 @@
-package com.project.collaborativeauthentication.android;
+package com.project.collaborativeauthentication.android.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;

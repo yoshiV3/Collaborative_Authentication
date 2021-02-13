@@ -1,4 +1,4 @@
-package com.project.collaborativeauthentication.android;
+package com.project.collaborativeauthentication.android.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.Constants;
 import com.project.collaborativeauthentication.android.presenter.CustomHomePresenter;
 import com.project.collaborativeauthentication.android.presenter.HomePresenter;
 import com.project.collaborativeauthentication.android.presenter.HomeView;
@@ -47,13 +48,19 @@ public class MainActivity extends AppCompatActivity implements HomeView {
                         },
                         new ViewController() {
                             @Override
-                            public void stopView() {
-
+                            public void stopView()
+                            {
+                                Intent intent = new Intent(currentView, AuthenticationForegroundService.class);
+                                intent.setAction(Constants.STOP_ACTION);
+                                startForegroundService(intent);
                             }
 
                             @Override
-                            public void startNewView() {
-
+                            public void startNewView()
+                            {
+                                Intent intent = new Intent(currentView, AuthenticationForegroundService.class);
+                                intent.setAction(Constants.START_ACTION);
+                                startForegroundService(intent);
                             }
                         }
                 );

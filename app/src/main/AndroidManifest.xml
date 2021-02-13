@@ -14,25 +14,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CollaborativeAuthentication">
+        <service
+            android:name=".android.ui.AuthenticationForegroundService"
+            android:enabled="true"
+            android:exported="true"></service>
 
-        <activity android:name=".android.MainActivity">
+        <activity android:name=".android.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".android.DistributedKeyGenerationActivity"
+            android:name=".android.ui.DistributedKeyGenerationActivity"
             android:label="@string/title_activity_distributed_key_generation"
             android:theme="@style/Theme.CollaborativeAuthentication.NoActionBar">
             android:parentActivityName="android.MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.MainActivity" />
-
+                android:value=".android.ui.MainActivity" />
         </activity>
     </application>
 

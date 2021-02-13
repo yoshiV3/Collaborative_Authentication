@@ -1,4 +1,4 @@
-package com.project.collaborativeauthentication.android;
+package com.project.collaborativeauthentication.android.ui;
 
 
 import android.os.Bundle;
