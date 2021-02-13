@@ -2,7 +2,7 @@ package com.project.collaborativeauthentication.android.connector_implementation
 
 
 import com.project.collaborativeauthentication.android.connector_interfaces.AuthenticationServiceConnector;
-import com.project.collaborativeauthentication.android.presenter.HomePresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.HomePresenter;
 
 public class AndroidAuthenticationServiceConnector implements AuthenticationServiceConnector
 {

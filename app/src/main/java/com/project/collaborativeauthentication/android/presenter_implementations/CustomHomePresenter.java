@@ -1,14 +1,18 @@
-package com.project.collaborativeauthentication.android.presenter;
+package com.project.collaborativeauthentication.android.presenter_implementations;
 
 import android.app.Activity;
 
 import com.project.collaborativeauthentication.android.connector_implementation.AndroidMainConnector;
 import com.project.collaborativeauthentication.android.connector_interfaces.MainConnector;
+import com.project.collaborativeauthentication.android.presenter_interfaces.HomePresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.ViewController;
+import com.project.collaborativeauthentication.android.presenter_interfaces.ViewStarter;
+import com.project.collaborativeauthentication.android.view_interfaces.HomeView;
 
 public class CustomHomePresenter implements HomePresenter
 {
-    private final HomeView       view;
-    private final ViewStarter    viewStarterDistributedKeyGeneration;
+    private final HomeView view;
+    private final ViewStarter viewStarterDistributedKeyGeneration;
     private final ViewController starterService;
     private final ViewStarter    viewStarterBluetooth;
     private final MainConnector  mainConnector;

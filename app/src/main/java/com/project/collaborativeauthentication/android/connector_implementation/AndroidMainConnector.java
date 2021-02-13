@@ -1,7 +1,7 @@
 package com.project.collaborativeauthentication.android.connector_implementation;
 
 import com.project.collaborativeauthentication.android.connector_interfaces.MainConnector;
-import com.project.collaborativeauthentication.android.presenter.HomePresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.HomePresenter;
 
 import java.util.ArrayList;
 

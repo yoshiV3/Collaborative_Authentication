@@ -1,6 +1,8 @@
-package com.project.collaborativeauthentication.android.presenter;
+package com.project.collaborativeauthentication.android.presenter_implementations;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.presenter_interfaces.NavigationPresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.NavigationView;
 
 public class CustomNavigationPresenter implements NavigationPresenter
 {
@@ -10,7 +12,7 @@ public class CustomNavigationPresenter implements NavigationPresenter
     private static final String MESSAGE_BACK_MAIN   = "Process not yet ready";
     private static final String MESSAGE_ERROR       = "Some error occurred.";
     private final Locator         locator;
-    private final NavigationView  view;
+    private final NavigationView view;
 
     public CustomNavigationPresenter(NavigationView view, Locator locator)
     {

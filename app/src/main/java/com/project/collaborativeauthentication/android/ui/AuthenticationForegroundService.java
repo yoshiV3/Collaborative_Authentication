@@ -12,9 +12,9 @@ import androidx.core.app.NotificationCompat;
 import com.project.collaborativeauthentication.R;
 
 import com.project.collaborativeauthentication.android.Constants;
-import com.project.collaborativeauthentication.android.presenter.AuthenticationServicePresenter;
-import com.project.collaborativeauthentication.android.presenter.AuthenticationServiceView;
-import com.project.collaborativeauthentication.android.presenter.CustomAuthenticationServicePresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.AuthenticationServicePresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.AuthenticationServiceView;
+import com.project.collaborativeauthentication.android.presenter_implementations.CustomAuthenticationServicePresenter;
 
 public class AuthenticationForegroundService extends Service implements AuthenticationServiceView {
 

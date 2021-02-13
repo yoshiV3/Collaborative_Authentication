@@ -1,4 +1,4 @@
-package com.project.collaborativeauthentication.android.presenter;
+package com.project.collaborativeauthentication.android.view_interfaces;
 
 import java.util.ArrayList;
 

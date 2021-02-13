@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.presenter.CustomMainDistributedKeyGenerationPresenter;
-import com.project.collaborativeauthentication.android.presenter.MainDistributedKeyGenerationPresenter;
+import com.project.collaborativeauthentication.android.presenter_implementations.CustomMainDistributedKeyGenerationPresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.MainDistributedKeyGenerationPresenter;
 
 
 public class MainDistributedKeyGenerationFragment extends CustomFragment  {

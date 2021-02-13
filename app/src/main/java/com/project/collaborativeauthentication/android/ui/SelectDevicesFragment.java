@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.presenter.CustomSelectDevicesPresenter;
-import com.project.collaborativeauthentication.android.presenter.SelectDevicesPresenter;
-import com.project.collaborativeauthentication.android.presenter.SelectDevicesView;
+import com.project.collaborativeauthentication.android.presenter_implementations.CustomSelectDevicesPresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.SelectDevicesPresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.SelectDevicesView;
 
 import java.util.ArrayList;
 

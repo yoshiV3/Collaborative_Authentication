@@ -15,11 +15,11 @@ import android.widget.Toast;
 
 import com.project.collaborativeauthentication.R;
 import com.project.collaborativeauthentication.android.Constants;
-import com.project.collaborativeauthentication.android.presenter.CustomHomePresenter;
-import com.project.collaborativeauthentication.android.presenter.HomePresenter;
-import com.project.collaborativeauthentication.android.presenter.HomeView;
-import com.project.collaborativeauthentication.android.presenter.ViewController;
-import com.project.collaborativeauthentication.android.presenter.ViewStarter;
+import com.project.collaborativeauthentication.android.presenter_implementations.CustomHomePresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.HomePresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.HomeView;
+import com.project.collaborativeauthentication.android.presenter_interfaces.ViewController;
+import com.project.collaborativeauthentication.android.presenter_interfaces.ViewStarter;
 
 public class MainActivity extends AppCompatActivity implements HomeView {
 

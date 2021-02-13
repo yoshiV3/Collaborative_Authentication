@@ -1,14 +1,13 @@
 package com.project.collaborativeauthentication.android.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.presenter.CustomNavigationPresenter;
-import com.project.collaborativeauthentication.android.presenter.NavigationPresenter;
-import com.project.collaborativeauthentication.android.presenter.NavigationView;
+import com.project.collaborativeauthentication.android.presenter_implementations.CustomNavigationPresenter;
+import com.project.collaborativeauthentication.android.presenter_interfaces.NavigationPresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
