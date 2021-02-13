@@ -1,24 +1,24 @@
 package com.project.collaborativeauthentication.android.connector_implementation;
 
-import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
+
 
 import com.project.collaborativeauthentication.android.connector_interfaces.BluetoothConnector;
 import com.project.collaborativeauthentication.android.connector_interfaces.BluetoothInformationConnector;
+import com.project.collaborativeauthentication.android.presenter.HomePresenter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class AndroidBluetoothConnector implements BluetoothConnector
 {
 
-    private final Activity                       context;
-    private final BluetoothInformationConnector  bluetoothInformationConnector;
+    private final HomePresenter                   context;
+    private final BluetoothInformationConnector   bluetoothInformationConnector;
 
 
-    public AndroidBluetoothConnector(Activity context)
+    public AndroidBluetoothConnector(HomePresenter context)
     {
-        this.context = context;
+        this.context                       = context;
         this.bluetoothInformationConnector = new AndroidBluetoothInformationConnector();
     }
 
@@ -27,7 +27,9 @@ public class AndroidBluetoothConnector implements BluetoothConnector
     @Override
     public void enableBluetooth()
     {
-        //TO DO
+        boolean success = !isBluetoothEnabled() && isBluetoothAvailable();
+        this.context.bluetoothEnabled(success);
+
     }
 
 

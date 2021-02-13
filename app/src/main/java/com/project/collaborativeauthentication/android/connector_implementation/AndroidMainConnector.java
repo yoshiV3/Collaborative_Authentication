@@ -1,18 +1,18 @@
 package com.project.collaborativeauthentication.android.connector_implementation;
 
-import com.project.collaborativeauthentication.android.MainActivity;
 import com.project.collaborativeauthentication.android.connector_interfaces.MainConnector;
+import com.project.collaborativeauthentication.android.presenter.HomePresenter;
 
 import java.util.ArrayList;
 
 public class AndroidMainConnector implements MainConnector {
 
-    private final MainActivity context;
+    private final HomePresenter context;
     private final AndroidBluetoothConnector bluetoothConnector;
     private final AndroidAuthenticationServiceConnector authenticationServiceConnector;
 
 
-    public AndroidMainConnector(MainActivity context)
+    public AndroidMainConnector(HomePresenter context)
     {
         this.context                        = context;
         this.bluetoothConnector             = new AndroidBluetoothConnector(context);
@@ -42,9 +42,13 @@ public class AndroidMainConnector implements MainConnector {
     @Override
     public void startAuthenticationService()
     {
-        if(this.bluetoothConnector.isBluetoothEnabled())
+        if(this.bluetoothConnector.isBluetoothAvailable())
         {
             this.authenticationServiceConnector.startAuthenticationService();
+        }
+        else
+        {
+            this.context.authenticationServiceStarted(false);
         }
     }
 

@@ -9,18 +9,17 @@ import androidx.annotation.NonNull;
 
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.connector_implementation.CustomFragment;
-import com.project.collaborativeauthentication.android.presenter.CustomMainDkgPresenter;
-import com.project.collaborativeauthentication.android.presenter.MainDkgPresenter;
+import com.project.collaborativeauthentication.android.presenter.CustomMainDistributedKeyGenerationPresenter;
+import com.project.collaborativeauthentication.android.presenter.MainDistributedKeyGenerationPresenter;
 
 
-public class MainFragmentDistributedKeyGeneration extends CustomFragment  {
+public class MainDistributedKeyGenerationFragment extends CustomFragment  {
 
 
-    private final MainDkgPresenter presenter;
-    public MainFragmentDistributedKeyGeneration()
+    private final MainDistributedKeyGenerationPresenter presenter;
+    public MainDistributedKeyGenerationFragment()
     {
-        this.presenter = new CustomMainDkgPresenter(getNavigator());
+        this.presenter = new CustomMainDistributedKeyGenerationPresenter(getNavigator());
     }
 
     @Override

@@ -1,9 +1,8 @@
-package com.project.collaborativeauthentication.android.connector_implementation;
+package com.project.collaborativeauthentication.android;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.project.collaborativeauthentication.android.SelectDevicesFragment;
 import com.project.collaborativeauthentication.android.presenter.Navigator;
 
 public abstract class CustomFragment extends Fragment

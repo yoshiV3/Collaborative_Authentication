@@ -1,6 +1,6 @@
 package com.project.collaborativeauthentication.android.presenter;
 
-public interface MainDkgPresenter
+public interface MainDistributedKeyGenerationPresenter
 {
     void cancel();
 }

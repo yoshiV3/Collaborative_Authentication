@@ -1,30 +1,44 @@
 package com.project.collaborativeauthentication.android.connector_implementation;
 
 
-import com.project.collaborativeauthentication.android.MainActivity;
 import com.project.collaborativeauthentication.android.connector_interfaces.AuthenticationServiceConnector;
+import com.project.collaborativeauthentication.android.presenter.HomePresenter;
 
 public class AndroidAuthenticationServiceConnector implements AuthenticationServiceConnector
 {
 
-    private final MainActivity context;
+    private final HomePresenter context;
     private boolean            running = false;
-    public AndroidAuthenticationServiceConnector(MainActivity context)
+    public AndroidAuthenticationServiceConnector(HomePresenter context)
     {
         this.context = context;
     }
 
     @Override
     public void startAuthenticationService() {
-        this.running = true;
-        this.context.showTextWithToast("Launched authentication service ");
+        if (this.running)
+        {
+            this.context.authenticationServiceStarted(false);
+        }
+        else
+        {
+            this.running = true;
+            this.context.authenticationServiceStarted(true);
+        }
     }
 
     @Override
     public void stopAuthenticationService()
     {
-        this.running = false;
-        this.context.showTextWithToast("Stopped authentication service ");
+        if (this.running)
+        {
+            this.running = false;
+            this.context.authenticationServiceStopped(true);
+        }
+        else
+        {
+            this.context.authenticationServiceStarted(false);
+        }
     }
 
     @Override

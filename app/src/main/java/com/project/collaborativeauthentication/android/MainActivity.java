@@ -1,9 +1,10 @@
 package com.project.collaborativeauthentication.android;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.fragment.NavHostFragment;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,27 +14,71 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.connector_implementation.AndroidMainConnector;
-import com.project.collaborativeauthentication.android.connector_interfaces.MainConnector;
+import com.project.collaborativeauthentication.android.presenter.CustomHomePresenter;
+import com.project.collaborativeauthentication.android.presenter.HomePresenter;
+import com.project.collaborativeauthentication.android.presenter.HomeView;
+import com.project.collaborativeauthentication.android.presenter.ViewController;
+import com.project.collaborativeauthentication.android.presenter.ViewStarter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeView {
 
 
-    private MainConnector connector;
+    private final HomePresenter presenter;
 
+    private boolean visibilityStopAuthenticationServiceOption  = false;
+    private boolean visibilityStartAuthenticationServiceOption = false;
+    private boolean visibilityBluetoothOption                  = false;
+
+
+    public MainActivity()
+    {
+        MainActivity  currentView = this;
+        this.presenter = new CustomHomePresenter
+                (
+                        this,
+                        (ViewStarter) () -> {
+                            Intent intent = new Intent(currentView, DistributedKeyGenerationActivity.class);
+                            currentView.startActivity(intent);
+                        },
+                        (ViewStarter) () -> {
+                            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                            startActivityForResult(enableIntent, Constants.BT_REQUEST_CODE);
+
+                        },
+                        new ViewController() {
+                            @Override
+                            public void stopView() {
+
+                            }
+
+                            @Override
+                            public void startNewView() {
+
+                            }
+                        }
+                );
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.connector = new AndroidMainConnector(this);
-        this.connector.startAuthenticationService();
+        MainActivity currentView = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.presenter.onStartAuthenticationService();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        if(requestCode == Constants.BT_REQUEST_CODE)
+        {
+            this.presenter.bluetoothResult(resultCode);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     public void onClickDistributedKeyGenerationButton(View view)
     {
-        Intent intent = new Intent(this, DistributedKeyGenerationActivity.class);
-        startActivity(intent);
+        presenter.onStartDistributedKeyGeneration();
     }
 
     @Override
@@ -52,13 +97,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        presenter.onPrepareOptionsMenu();
+
         MenuItem stop      = menu.findItem(R.id.listener_stop);
         MenuItem start     = menu.findItem(R.id.listener_start);
         MenuItem bluetooth = menu.findItem(R.id.enable_bluetooth);
 
-        adaptVisibilityMenuItem(stop, shouldDisplayStop());
-        adaptVisibilityMenuItem(start, shouldDisplayStart());
-        adaptVisibilityMenuItem(bluetooth, shouldDisplayBluetooth());
+        stop.setVisible(visibilityStopAuthenticationServiceOption);
+        start.setVisible(visibilityStartAuthenticationServiceOption);
+        bluetooth.setVisible(visibilityBluetoothOption);
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -69,54 +116,43 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId)
         {
             case R.id.listener_stop:
-                this.connector.stopAuthenticationService();
+                this.presenter.onStopAuthenticationService();
                 break;
             case R.id.listener_start:
-                this.connector.startAuthenticationService();
+                this.presenter.onStartAuthenticationService();
                 break;
             case R.id.enable_bluetooth:
-                this.connector.enableBluetooth();
+                this.presenter.onEnableBluetooth();
                 break;
             default:
-                showTextWithToast("This functionality is not available on your device.");
-                showTextWithToast("Please update the application");
+                this.presenter.onUnsupportedAction();
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    public void showTextWithToast(String text)
+    @Override
+    public void setVisibilityStopAuthenticationServiceOption(boolean visibility)
     {
+        this.visibilityStopAuthenticationServiceOption = visibility;
+    }
+
+    @Override
+    public void setVisibilityStartAuthenticationServiceOption(boolean visibility)
+    {
+        this.visibilityStartAuthenticationServiceOption = visibility;
+    }
+
+    @Override
+    public void setVisibilityBluetoothOption(boolean visibility)
+    {
+        this.visibilityBluetoothOption = visibility;
+    }
+
+    @Override
+    public void showTextOnToast(String text) {
         Toast toast = new Toast(this);
         toast.setText(text);
         toast.show();
     }
-    /*
-           PRIVATE METHODS FOR MAIN MENU
-     */
-    private void adaptVisibilityMenuItem(MenuItem item, boolean shouldBeDisplayed) {
-        if(shouldBeDisplayed)
-        {
-            item.setVisible(true);
-        }
-        else
-        {
-            item.setVisible(false);
-        }
-    }
-    private boolean shouldDisplayStop()
-    {
-        return this.connector.isAuthenticationServiceRunning();
-    }
-
-    private boolean shouldDisplayBluetooth()
-    {
-        return (!this.connector.isBluetoothEnabled() && this.connector.isBluetoothAvailable());
-    }
-
-    private boolean shouldDisplayStart()
-    {
-        return ((!this.connector.isAuthenticationServiceRunning()) && this.connector.isBluetoothEnabled());
-    }
-
 }

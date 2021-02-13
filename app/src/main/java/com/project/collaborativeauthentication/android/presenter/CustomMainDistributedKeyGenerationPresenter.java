@@ -2,12 +2,12 @@ package com.project.collaborativeauthentication.android.presenter;
 
 import com.project.collaborativeauthentication.R;
 
-public class CustomMainDkgPresenter implements MainDkgPresenter{
+public class CustomMainDistributedKeyGenerationPresenter implements MainDistributedKeyGenerationPresenter {
 
     private final Navigator   navigator;
 
 
-    public CustomMainDkgPresenter( Navigator navigator)
+    public CustomMainDistributedKeyGenerationPresenter(Navigator navigator)
     {
         this.navigator = navigator;
     }

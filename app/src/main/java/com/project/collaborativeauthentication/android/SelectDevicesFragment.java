@@ -5,19 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.connector_implementation.CustomFragment;
 import com.project.collaborativeauthentication.android.presenter.CustomSelectDevicesPresenter;
-import com.project.collaborativeauthentication.android.presenter.Navigator;
 import com.project.collaborativeauthentication.android.presenter.SelectDevicesPresenter;
 import com.project.collaborativeauthentication.android.presenter.SelectDevicesView;
 
