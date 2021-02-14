@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_paireddev"
-        android:layout_width="202dp"
-        android:layout_height="99dp"
+        android:layout_width="273dp"
+        android:layout_height="173dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="120dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +37,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_sel"
-        android:layout_width="202dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="116dp"
+        android:layout_width="269dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSD" />
 

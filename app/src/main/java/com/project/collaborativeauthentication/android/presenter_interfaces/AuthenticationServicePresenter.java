@@ -7,4 +7,6 @@ public interface AuthenticationServicePresenter
     void onUnsupportedAction();
 
     void notifyStateBluetoothChanged();
+    void notifyBluetoothPaused();
+    void notifyBluetoothStart();
 }

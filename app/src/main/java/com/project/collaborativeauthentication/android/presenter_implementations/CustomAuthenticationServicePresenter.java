@@ -17,7 +17,7 @@ public class CustomAuthenticationServicePresenter implements AuthenticationServi
     public  CustomAuthenticationServicePresenter(AuthenticationServiceView view)
     {
         this.view = view;
-        this.authenticationServicePermanentConnector = new AndroidServiceAuthenticationServicePermanentConnector();
+        this.authenticationServicePermanentConnector = new AndroidServiceAuthenticationServicePermanentConnector(this);
     }
 
     @Override
@@ -44,6 +44,18 @@ public class CustomAuthenticationServicePresenter implements AuthenticationServi
     public void notifyStateBluetoothChanged()
     {
         authenticationServicePermanentConnector.start();
+    }
+
+    @Override
+    public void notifyBluetoothPaused()
+    {
+        this.view.notifyPausedBluetooth();
+    }
+
+    @Override
+    public void notifyBluetoothStart()
+    {
+        this.view.notifyStartBluetooth();
     }
 
 }

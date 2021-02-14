@@ -44,7 +44,8 @@ public class AndroidActivityAuthenticationServiceConnector implements Authentica
     }
 
     @Override
-    public boolean isAuthenticationServiceRunning() {
+    public boolean isAuthenticationServiceRunning()
+    {
         return this.moduleAuthenticationService.isAuthenticationServiceOn();
     }
 

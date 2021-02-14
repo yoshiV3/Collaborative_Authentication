@@ -25,21 +25,23 @@ public class AuthenticationForegroundService extends Service implements Authenti
     private static final String                    CHANNEL_ID = "AuthenticationService";
     private final AuthenticationServicePresenter   presenter;
     private final CustomBluetoothBroadcastReceiver receiver;
-    private final NotificationManager              manager;
+
+
+    private  NotificationManager                    manager;
 
 
     public AuthenticationForegroundService()
     {
-        this.manager   =    getSystemService(NotificationManager.class);
         this.presenter = new CustomAuthenticationServicePresenter(this);
-        this.receiver  = new CustomBluetoothBroadcastReceiver(this.presenter);
+        this.receiver  = new CustomBluetoothBroadcastReceiver(presenter);
     }
 
     @Override
     public void onCreate()
     {
-        registerReceiver();
         super.onCreate();
+        this.manager   =     getSystemService(NotificationManager.class);
+        registerReceiver();
     }
 
     @Override
@@ -104,7 +106,7 @@ public class AuthenticationForegroundService extends Service implements Authenti
     @Override
     public void notifyStartBluetooth()
     {
-        Notification notification = getStartNotification();
+        Notification notification = getBluetoothStartNotification();
         notify(notification);
         manager.notify(2,notification);
     }
@@ -114,17 +116,21 @@ public class AuthenticationForegroundService extends Service implements Authenti
 
     }
 
-    private Notification getStartNotification() {
-        Intent notificationIntent   = new Intent(this, MainActivity.class);
-        notificationIntent.setAction(Intent.ACTION_MAIN);
-        notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, notificationIntent,0);
-        return getNotificationAutoCloseNoActivity( R.string.startNotificationText);
+    private Notification getBluetoothStartNotification() {
+        return getNotificationAutoCloseNoActivity(R.string.startNotificationText);
     }
 
     @Override
     public void notifyPausedBluetooth()
     {
+        Notification notification = getBluetoothPauseNotification();
+        notify(notification);
+        manager.notify(2,notification);
+    }
+
+    private Notification getBluetoothPauseNotification()
+    {
+        return getNotificationAutoCloseNoActivity(R.string.pauseNotificationText);
 
     }
 
@@ -144,6 +150,7 @@ public class AuthenticationForegroundService extends Service implements Authenti
         Notification resultNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(notificationText))
+                .setSmallIcon(R.drawable.ic_notification_asset)
                 .setAutoCancel(true)
                 .build();
         return resultNotification;

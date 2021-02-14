@@ -24,7 +24,7 @@ public class CustomHomePresenter implements HomePresenter
         this.viewStarterDistributedKeyGeneration = viewStarterDistributedKeyGeneration;
         this.viewStarterBluetooth                = viewStarterBluetooth;
         this.starterService                      = viewStarterService;
-        this.mainConnector = new AndroidMainConnector(this);
+        this.mainConnector                       = new AndroidMainConnector(this);
     }
 
 
@@ -77,10 +77,6 @@ public class CustomHomePresenter implements HomePresenter
         if(success)
         {
             this.starterService.startNewView();
-        }
-        else
-        {
-            view.showTextOnToast("Cannot start the authentication service.");
         }
     }
 

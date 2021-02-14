@@ -20,4 +20,5 @@
         There are no new keys  added to the system</string>
     <string name="notificationText">\"Authentication service available</string>
     <string name="startNotificationText">Bluetooth is available again.</string>
+    <string name="pauseNotificationText">Bluetooth is not available.</string>
 </resources>
