@@ -2,7 +2,10 @@ package com.project.collaborativeauthentication.android.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,14 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.presenter_interfaces.SelectWeightsPresenter;
+
+import java.util.ArrayList;
 
 
 public class SelectWeightFragment extends CustomFragment {
 
 
     private RecyclerView selectWeightsRecyclerView;
+    private SelectWeightsPresenter presenter;
+    private CustomWeightListViewAdapter adapter;
 
-    public SelectWeightFragment() { }
+    public SelectWeightFragment()
+    {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,5 +39,29 @@ public class SelectWeightFragment extends CustomFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_select_weight, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        view.findViewById(R.id.button_submit_weights).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.submit();
+            }
+        });
+
+
+        this.selectWeightsRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_weights);
+
+
+        ArrayList<String> selectedDevices = presenter.getSelectedDeviceNames();
+        this.adapter = new CustomWeightListViewAdapter(selectedDevices);
+
+        selectWeightsRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        selectWeightsRecyclerView.setAdapter(adapter);
+
+
+        super.onViewCreated(view, savedInstanceState);
     }
 }

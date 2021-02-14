@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
 
-import java.io.ObjectInputStream;
+
 import java.util.ArrayList;
 
 public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeightListViewAdapter.ViewHolder>

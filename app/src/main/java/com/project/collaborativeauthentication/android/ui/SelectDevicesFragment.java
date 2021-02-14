@@ -34,6 +34,9 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
         super.onCreate(savedInstanceState);
     }
 
+
+
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
