@@ -16,6 +16,16 @@
             app:destination="@id/cancelledFragment" />
     </fragment>
     <fragment
+        android:id="@+id/SelectWeights"
+        android:name="com.project.collaborativeauthentication.android.ui.SelectWeightFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_select_weight">
+
+        <action
+            android:id="@+id/submit_weights"
+            app:destination="@id/MainFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/SelectFragment"
         android:name="com.project.collaborativeauthentication.android.ui.SelectDevicesFragment"
         android:label="@string/second_fragment_label"
@@ -23,7 +33,7 @@
 
         <action
             android:id="@+id/submit"
-            app:destination="@id/MainFragment" />
+            app:destination="@id/SelectWeights" />
     </fragment>
     <fragment
         android:id="@+id/cancelledFragment"

@@ -21,4 +21,14 @@
     <string name="notificationText">\"Authentication service available</string>
     <string name="startNotificationText">Bluetooth is available again.</string>
     <string name="pauseNotificationText">Bluetooth is not available.</string>
+    <string name="textweight">Weights for each device</string>
+
+    <string-array name="possible_weigths">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
 </resources>

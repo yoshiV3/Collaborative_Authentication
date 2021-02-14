@@ -28,7 +28,8 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
     private SelectDevicesPresenter            presenter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
         this.presenter = new CustomSelectDevicesPresenter(this, getNavigator());
         super.onCreate(savedInstanceState);
     }
