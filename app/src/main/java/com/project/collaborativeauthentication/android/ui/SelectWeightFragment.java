@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,11 +13,12 @@ import android.view.ViewGroup;
 
 import com.project.collaborativeauthentication.R;
 import com.project.collaborativeauthentication.android.presenter_interfaces.SelectWeightsPresenter;
+import com.project.collaborativeauthentication.android.view_interfaces.SelectWeightsView;
 
 import java.util.ArrayList;
 
 
-public class SelectWeightFragment extends CustomFragment {
+public class SelectWeightFragment extends CustomFragment implements SelectWeightsView {
 
 
     private RecyclerView selectWeightsRecyclerView;
@@ -63,5 +63,10 @@ public class SelectWeightFragment extends CustomFragment {
 
 
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public int getSelectedWeightAt(int position) {
+        return 0;
     }
 }

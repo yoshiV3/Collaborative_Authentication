@@ -2,8 +2,6 @@ package com.project.collaborativeauthentication.android.session;
 
 import androidx.annotation.Nullable;
 
-import com.project.collaborativeauthentication.android.presenter_implementations.CustomSingletonSessionPresenter;
-
 import java.util.ArrayList;
 
 public class Session
