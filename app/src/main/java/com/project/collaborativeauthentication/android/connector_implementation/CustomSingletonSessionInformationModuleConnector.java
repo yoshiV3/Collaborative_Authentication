@@ -2,8 +2,11 @@ package com.project.collaborativeauthentication.android.connector_implementation
 
 
 import com.project.collaborativeauthentication.android.connector_interfaces.SessionInformationModuleConnector;
-import com.project.collaborativeauthentication.android.session.Selection;
+import com.project.collaborativeauthentication.android.modules_implementations.CustomSingletonModuleInformation;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
+import com.project.collaborativeauthentication.android.modules_interfaces.ModuleInformation;
 import com.project.collaborativeauthentication.android.session.Session;
+import com.project.collaborativeauthentication.android.system.Device;
 
 import java.util.ArrayList;
 
@@ -15,11 +18,14 @@ public class CustomSingletonSessionInformationModuleConnector implements Session
 
 
 
-    private Session activeSession;
+    private Session                activeSession;
+    private ModuleInformation      moduleInformation;
 
     private CustomSingletonSessionInformationModuleConnector()
     {
-        activeSession =  null;
+
+        activeSession          =  null;
+        moduleInformation      = CustomSingletonModuleInformation.getInstance();
     }
 
     public static CustomSingletonSessionInformationModuleConnector getInstance()
@@ -40,39 +46,35 @@ public class CustomSingletonSessionInformationModuleConnector implements Session
     }
 
     @Override
-    public void storeSelectedDevices(ArrayList<String> names)
+    public void storeSelectedDevices(ArrayList<Possibility> choices)
     { if (this.activeSession  != null)
         {
-            activeSession.setNames(names);
+            activeSession.setChoices(choices);
         }
     }
 
     @Override
-    public void storeSelectedWeights(ArrayList<Selection> selections)
-    { if (this.activeSession  != null)
-        {
-            this.activeSession.setSelections(selections);
-        }
+    public ArrayList<Possibility> getPairedDevices()
+    {
+       ArrayList<Device>         devices         =  moduleInformation.getPairedDevices();
+       ArrayList<Possibility>    possibilities   = new ArrayList<>();
+       for (Device device: devices)
+       {
+           possibilities.add(new Possibility(device));
+       }
+       return possibilities;
     }
 
+
     @Override
-    public ArrayList<String> getSelectedDeviceNames()
+    public ArrayList<Possibility> getSelected()
     {
         if (this.activeSession  != null)
         {
-            return this.activeSession.getNames();
+            return this.activeSession.getChoices();
         }
         return null;
     }
 
-    @Override
-    public ArrayList<Selection> getSelections()
-    {
-        if (this.activeSession  != null)
-        {
-            return this.activeSession.getSelections();
-        }
-        return null;
-    }
 
 }

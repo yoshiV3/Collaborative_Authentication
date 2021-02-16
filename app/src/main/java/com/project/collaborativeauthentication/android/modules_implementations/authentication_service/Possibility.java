@@ -1,5 +1,7 @@
 package com.project.collaborativeauthentication.android.modules_implementations.authentication_service;
 
+import com.project.collaborativeauthentication.android.system.Device;
+
 public class Possibility
 {
     private static  int currentNextIdentifier = 0;
@@ -17,19 +19,23 @@ public class Possibility
         return   newIdentifier;
     }
 
-    private final String name;
+    private final Device device;
     private final int    identifier;
     private int          weight = 1;
 
 
-    public Possibility(String name)
+    public Possibility(Device device)
     {
-        this.name        = name;
+        this.device      = device;
         this.identifier  = getNextIdentifier();
     }
 
     public String getName() {
-        return name;
+        return device.getName();
+    }
+
+    public Device getDevice() {
+        return device;
     }
 
     public int getIdentifier() {

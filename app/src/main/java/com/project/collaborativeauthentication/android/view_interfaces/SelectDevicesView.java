@@ -1,11 +1,13 @@
 package com.project.collaborativeauthentication.android.view_interfaces;
 
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
+
 import java.util.ArrayList;
 
 public interface SelectDevicesView
 {
-    void pushItemPairedDevices(String item);
-    void pushItemSelectedDevices(String item);
-    void pushItemListPairedDevices(ArrayList<String> items);
-    ArrayList<String> getSelectedItems();
+    void pushItemPairedDevices(Possibility item);
+    void pushItemSelectedDevices(Possibility item);
+    void pushItemListPairedDevices(ArrayList<Possibility> items);
+    ArrayList<Possibility> getSelectedItems();
 }

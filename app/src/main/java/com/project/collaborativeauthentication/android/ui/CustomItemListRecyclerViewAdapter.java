@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
 
 
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ public class CustomItemListRecyclerViewAdapter extends RecyclerView.Adapter<Cust
 {
 
 
-    private ArrayList<String>    items;
-    private View.OnClickListener listener;
+    private ArrayList<Possibility>    items;
+    private View.OnClickListener      listener;
 
 
-    public CustomItemListRecyclerViewAdapter(ArrayList<String>  items)
+    public CustomItemListRecyclerViewAdapter(ArrayList<Possibility>  items)
     {
         this.items = items;
     }
@@ -32,22 +33,20 @@ public class CustomItemListRecyclerViewAdapter extends RecyclerView.Adapter<Cust
         this.listener = listener;
     }
 
-    public String pop(int index)
+    public Possibility pop(int index)
     {
-        String old = this.items.remove(index);
+        Possibility old = this.items.remove(index);
         notifyItemRemoved(index);
-        //notifyItemRangeRemoved(index,1);
         return old;
     }
 
-    public void add(String item)
+    public void add(Possibility item)
     {
         this.items.add(item);
         notifyItemInserted(this.items.size()-1);
-        //notifyItemRangeInserted(this.items.size()-1, 1);
     }
 
-    public void addItemList(ArrayList<String> items)
+    public void addItemList(ArrayList<Possibility> items)
     {
         int insertedItemCount         = items.size();
         int positionFirstInsertedItem = this.items.size();
@@ -55,7 +54,7 @@ public class CustomItemListRecyclerViewAdapter extends RecyclerView.Adapter<Cust
         notifyItemRangeInserted(positionFirstInsertedItem, insertedItemCount);
     }
 
-    public ArrayList<String> getItems()
+    public ArrayList<Possibility> getItems()
     {
         return new ArrayList<>(this.items);
     }
@@ -72,7 +71,7 @@ public class CustomItemListRecyclerViewAdapter extends RecyclerView.Adapter<Cust
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
-        holder.getTextView().setText(this.items.get(position));
+        holder.getTextView().setText(this.items.get(position).getName());
     }
 
     @Override

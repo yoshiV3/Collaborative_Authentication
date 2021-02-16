@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
 import com.project.collaborativeauthentication.android.presenter_implementations.CustomSelectDevicesPresenter;
 import com.project.collaborativeauthentication.android.presenter_interfaces.SelectDevicesPresenter;
 import com.project.collaborativeauthentication.android.view_interfaces.SelectDevicesView;
@@ -57,9 +58,9 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
         pairedDevicesRecyclerView =   (RecyclerView) view.findViewById(R.id.recycleview_paireddev);
         selectedDevicesRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_sel);
 
-        ArrayList<String> pairedDevices = new ArrayList<String>();
+        ArrayList<Possibility> pairedDevices = new ArrayList<Possibility>();
         pairedDeviceAdapter = new CustomItemListRecyclerViewAdapter(pairedDevices);
-        ArrayList<String>    selectedDevices   = new ArrayList<String>();
+        ArrayList<Possibility>    selectedDevices   = new ArrayList<Possibility>();
         selectedDeviceAdapter = new CustomItemListRecyclerViewAdapter(selectedDevices);
 
         View.OnClickListener listenerPairedDevicesAdapter = new  View.OnClickListener()
@@ -69,7 +70,7 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
             public void onClick(View v)
             {
                 int position = pairedDevicesRecyclerView.getChildLayoutPosition(v);
-                String item  = pairedDeviceAdapter.pop(position);
+                Possibility item  = pairedDeviceAdapter.pop(position);
                 presenter.selectedItemPairedDevices(item);
             }
         };
@@ -81,7 +82,7 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
             public void onClick(View v)
             {
                 int position = selectedDevicesRecyclerView.getChildLayoutPosition(v);
-                String item  = selectedDeviceAdapter.pop(position);
+                Possibility item  = selectedDeviceAdapter.pop(position);
                 presenter.selectedItemSelectedDevices(item);
             }
         };
@@ -100,25 +101,25 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
     }
 
     @Override
-    public void pushItemPairedDevices(String item)
+    public void pushItemPairedDevices(Possibility item)
     {
         this.pairedDeviceAdapter.add(item);
     }
 
     @Override
-    public void pushItemSelectedDevices(String item)
+    public void pushItemSelectedDevices(Possibility item)
     {
         this.selectedDeviceAdapter.add(item);
     }
 
     @Override
-    public void pushItemListPairedDevices(ArrayList<String> items)
+    public void pushItemListPairedDevices(ArrayList<Possibility> items)
     {
         this.pairedDeviceAdapter.addItemList(items);
     }
 
     @Override
-    public ArrayList<String> getSelectedItems() {
+    public ArrayList<Possibility> getSelectedItems() {
         return this.selectedDeviceAdapter.getItems();
     }
 }

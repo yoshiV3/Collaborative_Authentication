@@ -4,6 +4,9 @@ import com.project.collaborativeauthentication.android.modules_interfaces.Module
 import com.project.collaborativeauthentication.android.modules_interfaces.ModuleNetwork;
 import com.project.collaborativeauthentication.android.system.AndroidBluetooth;
 import com.project.collaborativeauthentication.android.system.Bluetooth;
+import com.project.collaborativeauthentication.android.system.Device;
+
+import java.util.ArrayList;
 
 public class CustomSingletonModuleInformation implements ModuleInformation
 {
@@ -26,11 +29,18 @@ public class CustomSingletonModuleInformation implements ModuleInformation
 
     @Override
     public boolean isNetworkAvailable() {
-        return false;
+        return moduleNetwork.isNetworkAvailable();
     }
 
     @Override
-    public boolean isNetworkEnabled() {
-        return false;
+    public boolean isNetworkEnabled()
+    {
+        return moduleNetwork.isNetworkEnabled();
     }
+
+    @Override
+    public ArrayList<Device> getPairedDevices() {
+        return moduleNetwork.getPairedDevices();
+    }
+
 }

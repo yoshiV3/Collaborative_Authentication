@@ -1,15 +1,17 @@
 package com.project.collaborativeauthentication.android.connector_interfaces;
 
-import com.project.collaborativeauthentication.android.session.Selection;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
+
 
 import java.util.ArrayList;
 
 public interface SessionInformationModuleConnector
 {
     int createNewSession();
-    void storeSelectedDevices(ArrayList<String>  names);
-    void storeSelectedWeights( ArrayList<Selection> selections);
+    void storeSelectedDevices(ArrayList<Possibility>  names);
 
-    ArrayList<String> getSelectedDeviceNames();
-    ArrayList<Selection> getSelections();
+
+
+    ArrayList<Possibility> getPairedDevices();
+    ArrayList<Possibility> getSelected();
 }
