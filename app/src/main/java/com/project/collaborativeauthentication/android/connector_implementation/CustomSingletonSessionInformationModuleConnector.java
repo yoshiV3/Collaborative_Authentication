@@ -47,6 +47,15 @@ public class CustomSingletonSessionInformationModuleConnector implements Session
     }
 
     @Override
+    public void stopSession()
+    {
+
+        this.activeSession = null;
+
+    }
+
+
+    @Override
     public void storeSelectedDevices(ArrayList<Possibility> choices)
     {
         if (this.activeSession  != null)

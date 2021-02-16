@@ -8,7 +8,9 @@ import java.util.ArrayList;
 public interface SessionInformationModuleConnector
 {
     int createNewSession();
+    void stopSession();
     void storeSelectedDevices(ArrayList<Possibility>  names);
+
 
 
 
