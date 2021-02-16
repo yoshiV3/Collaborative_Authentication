@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
 import com.project.collaborativeauthentication.android.presenter_interfaces.SelectWeightsPresenter;
 import com.project.collaborativeauthentication.android.view_interfaces.SelectWeightsView;
 
@@ -55,11 +56,13 @@ public class SelectWeightFragment extends CustomFragment implements SelectWeight
         this.selectWeightsRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_weights);
 
 
-        ArrayList<String> selectedDevices = presenter.getSelectedDeviceNames();
+        ArrayList<Possibility> selectedDevices = presenter.getSelectedDeviceNames();
         this.adapter = new CustomWeightListViewAdapter(selectedDevices);
 
         selectWeightsRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         selectWeightsRecyclerView.setAdapter(adapter);
+
+
 
 
         super.onViewCreated(view, savedInstanceState);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
+import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
 
 
 import java.util.ArrayList;
@@ -20,9 +22,9 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
 {
 
 
-    private ArrayList<String> items;
+    private ArrayList<Possibility> items;
 
-    public CustomWeightListViewAdapter(ArrayList<String> items)
+    public CustomWeightListViewAdapter(ArrayList<Possibility> items)
     {
         this.items = items;
     }
@@ -36,7 +38,19 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getTextView().setText(this.items.get(position));
+        int positionRecyclerView = position;
+        holder.getTextView().setText(this.items.get(position).getName());
+        holder.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                items.get(positionRecyclerView).setWeight(position+1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
+        });
     }
 
     @Override
@@ -59,12 +73,15 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
             spinner.setTag("spinner");
-            spinner.setSelection(0);
         }
 
         public TextView getTextView()
         {
             return this.textView;
+        }
+
+        public Spinner getSpinner() {
+            return spinner;
         }
     }
 
