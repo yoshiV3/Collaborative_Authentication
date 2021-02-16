@@ -6,7 +6,6 @@ import com.project.collaborativeauthentication.android.connector_interfaces.Sess
 import com.project.collaborativeauthentication.android.modules_implementations.authentication_service.Possibility;
 import com.project.collaborativeauthentication.android.presenter_interfaces.Navigator;
 import com.project.collaborativeauthentication.android.presenter_interfaces.SelectWeightsPresenter;
-import com.project.collaborativeauthentication.android.view_interfaces.SelectDevicesView;
 import com.project.collaborativeauthentication.android.view_interfaces.SelectWeightsView;
 
 import java.util.ArrayList;

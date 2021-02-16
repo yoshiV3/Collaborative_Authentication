@@ -41,15 +41,21 @@ public class CustomSingletonSessionInformationModuleConnector implements Session
     public int createNewSession()
     {
         Session newSession = new Session();
+        activeSession      = newSession;
         int sessionNumber  = newSession.getSessionNumber();
         return sessionNumber;
     }
 
     @Override
     public void storeSelectedDevices(ArrayList<Possibility> choices)
-    { if (this.activeSession  != null)
+    {
+        if (this.activeSession  != null)
         {
             activeSession.setChoices(choices);
+        }
+        else
+        {
+            throw new IllegalStateException("No active session, so we cannot store the data");
         }
     }
 

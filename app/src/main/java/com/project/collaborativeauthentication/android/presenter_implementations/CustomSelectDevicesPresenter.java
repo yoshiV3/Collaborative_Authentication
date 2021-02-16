@@ -20,9 +20,10 @@ public class CustomSelectDevicesPresenter implements SelectDevicesPresenter
 
     public CustomSelectDevicesPresenter(SelectDevicesView view, Navigator navigator)
     {
-        this.view = view;
+        this.view               = view;
         this.navigator          = navigator;
         this.sessionConnector   = CustomSingletonSessionInformationModuleConnector.getInstance();
+        sessionConnector.createNewSession();
     }
 
     @Override

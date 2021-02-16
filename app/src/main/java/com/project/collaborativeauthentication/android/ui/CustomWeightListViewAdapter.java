@@ -1,6 +1,6 @@
 package com.project.collaborativeauthentication.android.ui;
 
-import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +32,18 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.selection, parent, false);
         return new CustomWeightListViewAdapter.ViewHolder(view);
+    }
+
+
+
+    public void addItemList(ArrayList<Possibility> items)
+    {
+        int insertedItemCount         = items.size();
+        int positionFirstInsertedItem = this.items.size();
+        this.items.addAll(items);
+        notifyItemRangeInserted(positionFirstInsertedItem, insertedItemCount);
     }
 
     @Override
@@ -43,7 +53,9 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
         holder.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                items.get(positionRecyclerView).setWeight(position+1);
+                int newWeight = position +1;
+                items.get(positionRecyclerView).setWeight(newWeight);
+                holder.currentSelected.setText(String.valueOf(newWeight));
             }
 
             @Override
@@ -61,23 +73,30 @@ public class CustomWeightListViewAdapter extends RecyclerView.Adapter<CustomWeig
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
         private  final TextView textView;
+        private  final TextView currentSelected;
         private  final Spinner spinner;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            this.textView = (TextView) itemView.findViewById(R.id.textSelectionItem);
-            this.spinner  = (Spinner)  itemView.findViewById(R.id.weigths);
+            this.textView          = (TextView) itemView.findViewById(R.id.textSelectionItem);
+            this.spinner           = (Spinner)  itemView.findViewById(R.id.weights);
+            this.currentSelected   = (TextView) itemView.findViewById(R.id.textCurrentSelected);
+
 
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(itemView.getContext(),
                     R.array.possible_weigths, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
-            spinner.setTag("spinner");
+            currentSelected.setText(String.valueOf(1));
         }
 
         public TextView getTextView()
         {
             return this.textView;
+        }
+
+        public TextView getCurrentSelected() {
+            return currentSelected;
         }
 
         public Spinner getSpinner() {
