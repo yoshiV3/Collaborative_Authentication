@@ -6,7 +6,6 @@
     <string name="menu_enable_bluetooth"> Enable bluetooth</string>
     <string name="title_activity_distributed_key_generation">DistributedKeyGenerationActivity
     </string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
@@ -23,6 +22,8 @@
     <string name="pauseNotificationText">Bluetooth is not available.</string>
     <string name="textweight">Weights for each device</string>
 
+    <string name="errornot"> Error occurred. Authentication service stopped.</string>
+
     <string-array name="possible_weigths">
         <item>1</item>
         <item>2</item>
@@ -30,5 +31,14 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="errornotnostop">Error occurred. Authentication service still active</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prefillLogin">Login</string>
+    <string name="go">Go</string>
+    <string name="cancel">cancel</string>
+    <string name="bt_new">New</string>
+    <string name="resume">resume</string>
+    <string name="clear">clear</string>
 
 </resources>

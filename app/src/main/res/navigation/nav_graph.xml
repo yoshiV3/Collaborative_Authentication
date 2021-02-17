@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SelectFragment">
+    app:startDestination="@id/startScreenDistributedKeyGenerationFragment">
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.project.collaborativeauthentication.android.ui.MainDistributedKeyGenerationFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.MainDistributedKeyGenerationFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_main">
 
@@ -17,27 +17,85 @@
     </fragment>
     <fragment
         android:id="@+id/SelectWeights"
-        android:name="com.project.collaborativeauthentication.android.ui.SelectWeightFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.SelectWeightFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_select_weight">
 
         <action
             android:id="@+id/submit_weights"
-            app:destination="@id/MainFragment" />
+            app:destination="@id/startMainFragment" />
     </fragment>
     <fragment
         android:id="@+id/SelectFragment"
-        android:name="com.project.collaborativeauthentication.android.ui.SelectDevicesFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.SelectDevicesFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_select_devices">
 
         <action
             android:id="@+id/submit"
-            app:destination="@id/SelectWeights" />
+            app:destination="@id/startSelectWeightFragment" />
     </fragment>
     <fragment
         android:id="@+id/cancelledFragment"
-        android:name="com.project.collaborativeauthentication.android.ui.CancelledFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.CancelledFragment"
         android:label="fragment_cancelled"
         tools:layout="@layout/fragment_cancelled" />
+    <fragment
+        android:id="@+id/loginDetailsFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.LoginDetailsFragment"
+        android:label="fragment_login_details"
+        tools:layout="@layout/fragment_login_details" >
+        <action
+            android:id="@+id/start"
+            app:destination="@id/startDeviceSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startDeviceSelectionFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartDeviceSelectionFragment"
+        android:label="fragment_start_device_selection"
+        tools:layout="@layout/fragment_start_device_selection" >
+        <action
+            android:id="@+id/start_sel"
+            app:destination="@id/SelectFragment" />
+        <action
+            android:id="@+id/cancel_select_devices"
+            app:destination="@id/cancelledFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startScreenDistributedKeyGenerationFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartScreenDistributedKeyGenerationFragment"
+        android:label="fragment_start_screen_distributed_key_generation"
+        tools:layout="@layout/fragment_start_screen_distributed_key_generation" >
+        <action
+            android:id="@+id/action_startScreenDistributedKeyGenerationFragment_to_loginDetailsFragment"
+            app:destination="@id/loginDetailsFragment" />
+        <action
+            android:id="@+id/action_startScreenDistributedKeyGenerationFragment_to_startDeviceSelectionFragment"
+            app:destination="@id/startDeviceSelectionFragment" />
+        <action
+            android:id="@+id/action_startScreenDistributedKeyGenerationFragment_to_startSelectWeightFragment"
+            app:destination="@id/startSelectWeightFragment" />
+        <action
+            android:id="@+id/action_startScreenDistributedKeyGenerationFragment_to_startMainFragment"
+            app:destination="@id/startMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startSelectWeightFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartSelectWeightFragment"
+        android:label="StartSelectWeightFragment" >
+        <action
+            android:id="@+id/action_startSelectWeightFragment_to_cancelledFragment"
+            app:destination="@id/cancelledFragment" />
+        <action
+            android:id="@+id/action_startSelectWeightFragment_to_SelectWeights"
+            app:destination="@id/SelectWeights" />
+    </fragment>
+    <fragment
+        android:id="@+id/startMainFragment"
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartMainFragment"
+        android:label="StartMainFragment" >
+        <action
+            android:id="@+id/action_startMainFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
+    </fragment>
 </navigation>

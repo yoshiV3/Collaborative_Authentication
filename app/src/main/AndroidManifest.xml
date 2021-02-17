@@ -15,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollaborativeAuthentication">
         <service
-            android:name=".android.ui.AuthenticationForegroundService"
+            android:name=".android.view.authentication_service.AuthenticationEntryPointForegroundService"
             android:enabled="true"
             android:exported="true"></service>
 
-        <activity android:name=".android.ui.MainActivity">
+        <activity android:name=".android.view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,13 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".android.ui.DistributedKeyGenerationActivity"
+            android:name=".android.view.distributed_key_generation.internal.DistributedKeyGenerationActivity"
             android:label="@string/title_activity_distributed_key_generation"
             android:theme="@style/Theme.CollaborativeAuthentication.NoActionBar">
             android:parentActivityName="android.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".android.ui.MainActivity" />
+                android:value=".android.view.main.MainActivity" />
         </activity>
     </application>
 
