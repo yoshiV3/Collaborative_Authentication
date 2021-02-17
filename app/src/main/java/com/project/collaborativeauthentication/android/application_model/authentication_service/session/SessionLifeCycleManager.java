@@ -8,9 +8,9 @@ public class SessionLifeCycleManager
     private LinkedList<Session> waitForSelectWeightQueue  = new LinkedList<>();
     private LinkedList<Session> waitForMainQueue          = new LinkedList<>();
 
-    private Session nextSelectDevices = null;
-    private Session nextSelectWeights= null;
-    private Session nextMain = null;
+    private Session nextSelectDevices  = null;
+    private Session nextSelectWeights  = null;
+    private Session nextMain           = null;
 
 
 
@@ -44,7 +44,7 @@ public class SessionLifeCycleManager
 
     public void pushNextSessionSelectDevices(Session session)
     {
-        if (nextSelectDevices == null)
+        if (nextSelectDevices != null)
         {
             throw new IllegalStateException();
         }
@@ -53,7 +53,7 @@ public class SessionLifeCycleManager
 
     public void pushNextSessionSelectWeights(Session session)
     {
-        if (nextSelectWeights == null)
+        if (nextSelectWeights != null)
         {
             throw new IllegalStateException();
         }
@@ -63,7 +63,7 @@ public class SessionLifeCycleManager
 
     public void pushNextSessionMain(Session session)
     {
-        if (nextMain == null)
+        if (nextMain != null)
         {
             throw new IllegalStateException();
         }

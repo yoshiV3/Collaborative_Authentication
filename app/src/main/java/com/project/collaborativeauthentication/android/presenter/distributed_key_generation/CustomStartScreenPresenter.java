@@ -61,9 +61,9 @@ public class CustomStartScreenPresenter implements  StartScreenPresenter
     public void getDisplayInformation()
     {
         SessionModel sessionModel = model.getSessionModel();
-        int nbOfSessionsD         = sessionModel.getNumberOfWaitingSessionSelectDevices();
-        int nbOfSessionsW         = sessionModel.getNumberOfWaitingSessionSelectWeights();
-        int nbOfSessionsM         = sessionModel.getNumberOfWaitingSessionSelectMain();
+        int nbOfSessionsD         = sessionModel.getNumberOfWaitingSessionSelectDevices() + CustomStartSelectDevicesPresenter.getSizeQueue();
+        int nbOfSessionsW         = sessionModel.getNumberOfWaitingSessionSelectWeights() + CustomStartSelectWeightsPresenter.getSizeQueue();
+        int nbOfSessionsM         = sessionModel.getNumberOfWaitingSessionSelectMain()    + CustomStartMainPresenter.getSizeQueue();
         view.setVisibilitySelectDevices(nbOfSessionsD>0);
         view.setVisibilitySelectWeights(nbOfSessionsW>0);
         view.setVisibilityMain(nbOfSessionsM>0);

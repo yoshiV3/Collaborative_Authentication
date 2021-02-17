@@ -7,9 +7,8 @@ import com.project.collaborativeauthentication.android.view.distributed_key_gene
 import java.util.LinkedList;
 import com.project.collaborativeauthentication.R;
 
-public class CustomStartSelectDevicesPresenter extends  CustomStartTaskPresenter
+public class CustomStartMainPresenter extends CustomStartTaskPresenter
 {
-
     private  static LinkedList<Session> queue = new LinkedList<>();
 
     public static int getSizeQueue()
@@ -17,8 +16,7 @@ public class CustomStartSelectDevicesPresenter extends  CustomStartTaskPresenter
         return  queue.size();
     }
 
-    public CustomStartSelectDevicesPresenter(Navigator navigator, StartTaskView view)
-    {
+    public CustomStartMainPresenter(Navigator navigator, StartTaskView view) {
         super(navigator, view);
     }
 
@@ -28,10 +26,9 @@ public class CustomStartSelectDevicesPresenter extends  CustomStartTaskPresenter
     }
 
     @Override
-    protected Session getNext()
-    {
+    protected Session getNext() {
         SessionModel sessionModel = getModel().getSessionModel();
-        Session session = sessionModel.getNextSessionWaitingForSelectDevices();
+        Session session = sessionModel.getNextSessionWaitingForMain();
         return session;
     }
 
@@ -39,40 +36,38 @@ public class CustomStartSelectDevicesPresenter extends  CustomStartTaskPresenter
     protected void pushNext(Session session)
     {
         SessionModel sessionModel = getModel().getSessionModel();
-        sessionModel.pushSessionToSelectDevices(session);
+        sessionModel.pushSessionToMain(session);
     }
 
     @Override
     public void start()
     {
-        start(R.id.start_sel);
+        start(R.id.action_startMainFragment_to_MainFragment);
     }
 
     @Override
     public void stop()
     {
-        stop(R.id.cancel_select_devices);
+        stop(R.id.action_startMainFragment_to_cancelledFragment);
     }
 
     @Override
     public int getButtonGoId() {
-        return R.id.button;
+        return R.id.button_go_sm;
     }
 
     @Override
     public int getButtonStopId() {
-        return R.id.button_cancel_ss;
+        return R.id.button_cancel_sm;
     }
 
     @Override
     public int getTextViewLogin() {
-        return R.id.textView_lnss;
+        return R.id.textView_lnm;
     }
 
     @Override
     public int getTextViewAppName() {
-        return R.id.textView_anss;
+        return R.id.textView_anm;
     }
-
-
 }

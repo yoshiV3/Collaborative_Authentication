@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".android.view.distributed_key_generation.internal.StartDeviceSelectionFragment" >
+    tools:context=".android.view.distributed_key_generation.internal.StartWeightSelectionFragment">
 
     <TextView
-        android:id="@+id/textView_anss"
+        android:id="@+id/textView_answ"
         android:layout_width="289dp"
         android:layout_height="54dp"
         android:layout_marginTop="140dp"
@@ -17,32 +17,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_lnss"
+        android:id="@+id/textView_lnsw"
         android:layout_width="288dp"
         android:layout_height="53dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="60dp"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_anss" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_answ" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_go_sw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="60dp"
         android:text="@string/go"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_lnss" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_lnsw" />
 
     <Button
-        android:id="@+id/button_cancel_ss"
+        android:id="@+id/button_cancel_sw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="20dp"
         android:text="@string/cancel"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/textView_lnss" />
+        app:layout_constraintEnd_toStartOf="@+id/button_go_sw"
+        app:layout_constraintTop_toBottomOf="@+id/textView_lnsw" />
 </androidx.constraintlayout.widget.ConstraintLayout>

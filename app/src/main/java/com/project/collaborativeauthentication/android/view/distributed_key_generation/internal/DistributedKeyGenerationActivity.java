@@ -5,22 +5,23 @@ import android.widget.Toast;
 
 
 import com.project.collaborativeauthentication.R;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_implementations.CustomNavigationPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_interfaces.NavigationPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.view_interfaces.NavigationView;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.CustomControllerPresenter;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.ControllerPresenter;
+import com.project.collaborativeauthentication.android.view.distributed_key_generation.ControllerView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
 
-public class DistributedKeyGenerationActivity extends AppCompatActivity  implements NavigationView {
+public class DistributedKeyGenerationActivity extends AppCompatActivity  implements ControllerView {
 
 
-    private final NavigationPresenter navigationPresenter;
+    private final ControllerPresenter navigationPresenter;
 
     public DistributedKeyGenerationActivity()
     {
-        this.navigationPresenter = new CustomNavigationPresenter(this,new NavigationPresenter.Locator() {
+        this.navigationPresenter = new CustomControllerPresenter(this,new ControllerPresenter.Locator() {
             @Override
             public int getCurrentPosition() {
                 return NavHostFragment.findNavController(getSupportFragmentManager().getFragments().get(0)).getCurrentDestination().getId();

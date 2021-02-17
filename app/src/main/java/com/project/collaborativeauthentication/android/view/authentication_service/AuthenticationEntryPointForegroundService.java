@@ -116,8 +116,10 @@ public class AuthenticationEntryPointForegroundService extends Service implement
         manager.notify(3,notification);
     }
 
+
+
     @Override
-    public void notifyWithoutStop()
+    public void notifyErrorWithoutStop()
     {
         Notification notification = getNotificationAutoCloseNoActivity(R.string.errornotnostop);
         manager.notify(3,notification);

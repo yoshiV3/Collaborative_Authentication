@@ -11,4 +11,5 @@ public class Constants
     public static final int  BLUETOOTH_CHANGED_ON  = 1;
     public static final int  BLUETOOTH_CHANGED_OFF = 2;
     public static final int  ERROR                 = 0;
+    public static final int  DONE                  = 4;
 }

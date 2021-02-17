@@ -1,4 +1,4 @@
-package com.project.collaborativeauthentication.android.z_old_structure.presenter_interfaces;
+package com.project.collaborativeauthentication.android.presenter.distributed_key_generation;
 
 import com.project.collaborativeauthentication.android.application_model.authentication_service.session.Possibility;
 

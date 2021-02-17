@@ -115,7 +115,7 @@ public class StartScreenDistributedKeyGenerationFragment extends CustomFragment 
 
         displayButtonAndText(R.id.button_resume_ds, R.id.textView_nb_ds, visibilityD, TEXT_DEVICES + String.valueOf(presenter.getNumberOfSessionsForD()));
         displayButtonAndText(R.id.button_resume_sw, R.id.textView_nb_ws, visibilityW, TEXT_WEIGHTS + String.valueOf(presenter.getNumberOfSessionsForW()));
-        displayButtonAndText(R.id.button_resume_ds, R.id.textView_nb_m, visibilityD, TEXT_MAIN + String.valueOf(presenter.getNumberOfSessionsForM()));
+        displayButtonAndText(R.id.button_resume_main, R.id.textView_nb_m, visibilityM, TEXT_MAIN + String.valueOf(presenter.getNumberOfSessionsForM()));
     }
 
     private void displayButtonAndText(int buttonId, int textId, boolean visible, String text )

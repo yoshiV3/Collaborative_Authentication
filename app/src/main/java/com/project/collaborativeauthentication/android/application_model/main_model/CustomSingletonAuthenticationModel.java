@@ -111,8 +111,6 @@ public class CustomSingletonAuthenticationModel implements CollaborativeAuthenti
                     {
                         return true;
                     }
-                    entryPoint.stop();
-                    return false;
                 }
                 else if (network.isNetworkAvailable())
                 {
@@ -121,12 +119,6 @@ public class CustomSingletonAuthenticationModel implements CollaborativeAuthenti
                         entryPoint.startInPause();
                         return true;
                     }
-                    else if (entryPoint.isEntryPointReady())
-                    {
-                        entryPoint.stop();
-                        return false;
-                    }
-                    return true;
                 }
                 if (!entryPoint.isEntryPointOff())
                 {
@@ -155,6 +147,10 @@ public class CustomSingletonAuthenticationModel implements CollaborativeAuthenti
                         entryPoint.restart();
                         return Constants.BLUETOOTH_CHANGED_ON;
                     }
+                    else if (entryPoint.isEntryPointReady())
+                    {
+                        return Constants.DONE;
+                    }
                 }
                 else if (network.isNetworkAvailable())
                 {
@@ -162,6 +158,10 @@ public class CustomSingletonAuthenticationModel implements CollaborativeAuthenti
                     {
                         entryPoint.pause();
                         return Constants.BLUETOOTH_CHANGED_OFF;
+                    }
+                    else if (entryPoint.isEntryPointPaused())
+                    {
+                        return Constants.DONE;
                     }
                 }
                 if (!entryPoint.isEntryPointOff())

@@ -1,4 +1,6 @@
 package com.project.collaborativeauthentication.android.presenter.authentication_service;
+import android.util.Log;
+
 import com.project.collaborativeauthentication.android.Constants;
 import com.project.collaborativeauthentication.android.application_model.main_model.CollaborativeAuthenticationModel;
 import com.project.collaborativeauthentication.android.application_model.main_model.CustomSingletonAuthenticationModel;
@@ -28,6 +30,7 @@ public class CustomAuthenticationEntryPointPresenter implements AuthenticationEn
         }
         else
         {
+            Log.i("CAM", "Stopped  during starting entry point");
             view.notifyError();
             view.coldStop();
         }
@@ -58,7 +61,10 @@ public class CustomAuthenticationEntryPointPresenter implements AuthenticationEn
            case Constants.BLUETOOTH_CHANGED_OFF:
                this.view.notifyPausedBluetooth();
                break;
+           case Constants.DONE:
+               break;
            default:
+               Log.i("CAM", "Stopped  during change of bluetooth change");
                this.view.notifyError();
                this.view.stop();
        }

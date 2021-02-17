@@ -13,18 +13,18 @@ import android.view.ViewGroup;
 
 import com.project.collaborativeauthentication.R;
 import com.project.collaborativeauthentication.android.application_model.authentication_service.session.Possibility;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_implementations.CustomSelectWeightsPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_interfaces.SelectWeightsPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.view_interfaces.SelectWeightsView;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.CustomSelectWeightsPresenter;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.SelectWeightsPresenter;
+import com.project.collaborativeauthentication.android.view.distributed_key_generation.SelectWeightsView;
+
 
 import java.util.ArrayList;
 
 
-public class SelectWeightFragment extends CustomFragment implements SelectWeightsView {
-
-
-    private RecyclerView selectWeightsRecyclerView;
-    private SelectWeightsPresenter presenter;
+public class SelectWeightFragment extends CustomFragment implements SelectWeightsView
+{
+    private RecyclerView                selectWeightsRecyclerView;
+    private SelectWeightsPresenter      presenter;
     private CustomWeightListViewAdapter adapter;
 
     public SelectWeightFragment()
@@ -65,7 +65,6 @@ public class SelectWeightFragment extends CustomFragment implements SelectWeight
 
 
 
-
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -74,4 +73,6 @@ public class SelectWeightFragment extends CustomFragment implements SelectWeight
         adapter.addItemList(presenter.getSelectedDeviceNames());
         super.onStart();
     }
+
+
 }

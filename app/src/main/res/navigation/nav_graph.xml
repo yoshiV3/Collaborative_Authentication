@@ -81,8 +81,9 @@
     </fragment>
     <fragment
         android:id="@+id/startSelectWeightFragment"
-        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartSelectWeightFragment"
-        android:label="StartSelectWeightFragment" >
+        android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartWeightSelectionFragment"
+        android:label="fragment_start_weight_selection"
+        tools:layout="@layout/fragment_start_weight_selection" >>
         <action
             android:id="@+id/action_startSelectWeightFragment_to_cancelledFragment"
             app:destination="@id/cancelledFragment" />
@@ -93,9 +94,13 @@
     <fragment
         android:id="@+id/startMainFragment"
         android:name="com.project.collaborativeauthentication.android.view.distributed_key_generation.internal.StartMainFragment"
-        android:label="StartMainFragment" >
+        android:label="StartMainFragment"
+        tools:layout="@layout/fragment_start_main">
         <action
             android:id="@+id/action_startMainFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_startMainFragment_to_cancelledFragment"
+            app:destination="@id/cancelledFragment" />
     </fragment>
 </navigation>

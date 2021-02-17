@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,9 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.collaborativeauthentication.R;
 import com.project.collaborativeauthentication.android.application_model.authentication_service.session.Possibility;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_implementations.CustomSelectDevicesPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.presenter_interfaces.SelectDevicesPresenter;
-import com.project.collaborativeauthentication.android.z_old_structure.view_interfaces.SelectDevicesView;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.CustomSelectDevicesPresenter;
+import com.project.collaborativeauthentication.android.presenter.distributed_key_generation.SelectDevicesPresenter;
+import com.project.collaborativeauthentication.android.view.distributed_key_generation.SelectDevicesView;
+
 
 import java.util.ArrayList;
 
@@ -121,5 +123,13 @@ public class SelectDevicesFragment extends CustomFragment implements SelectDevic
     @Override
     public ArrayList<Possibility> getSelectedItems() {
         return this.selectedDeviceAdapter.getItems();
+    }
+
+    @Override
+    public void show(String text)
+    {
+        Toast toast = new Toast(getContext());
+        toast.setText(text);
+        toast.show();
     }
 }
